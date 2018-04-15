@@ -129,6 +129,8 @@ class DetectionHandler():
         # object detection
         v_param1 = self.obj_detection.detect(self.stop_cascade, grey_image, image)
         v_param2 = self.obj_detection.detect(self.light_cascade, grey_image, image)
+        d1 = 0
+        d2 = 0
         # distance measurement
         if v_param1 > 0 or v_param2 > 0:
           d1 = self.d_to_camera.calculate(v_param1, self.h1, 300, image)
