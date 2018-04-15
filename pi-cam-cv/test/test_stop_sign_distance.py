@@ -44,8 +44,8 @@ class ObjectDetection(object):
         cascade_obj = cascade_classifier.detectMultiScale(
             gray_image,
             scaleFactor=1.1,
-            minNeighbors=5,
-            minSize=(25, 25),
+            minNeighbors=3,
+            minSize=(20, 20),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
 
