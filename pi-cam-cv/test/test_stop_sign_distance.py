@@ -127,10 +127,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		self.d_stop_sign = d1
 		self.d_light = d2
 
-print ("v param 1=",v_param1)
-print ("v param 2=",v_param2)
+	print ("v param 1=",v_param1)
+	print ("v param 2=",v_param2)
 
- 
 	# show the frame
 	cv2.imshow("Frame", image)
 
