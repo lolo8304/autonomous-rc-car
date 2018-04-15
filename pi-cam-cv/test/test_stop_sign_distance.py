@@ -101,12 +101,15 @@ rawCapture = PiRGBArray(camera, size=(160, 120))
 time.sleep(0.1)
 
 obj_detection = ObjectDetection()
-rc_car = RCControl()
 
 # cascade classifiers
 stop_cascade = cv2.CascadeClassifier('cascade_xml/stop_sign.xml')
 light_cascade = cv2.CascadeClassifier('cascade_xml/traffic_light.xml')
  
+d_to_camera = DistanceToCamera()
+d_stop_sign = 25
+d_light = 25
+
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	# grab the raw NumPy array representing the image, then initialize the timestamp
@@ -114,6 +117,18 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	image = frame.array
 	grey_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+	# object detection
+	v_param1 = self.obj_detection.detect(self.stop_cascade, gray, image)
+	v_param2 = self.obj_detection.detect(self.light_cascade, gray, image)
+	# distance measurement
+	if v_param1 > 0 or v_param2 > 0:
+		d1 = self.d_to_camera.calculate(v_param1, self.h1, 300, image)
+		d2 = self.d_to_camera.calculate(v_param2, self.h2, 100, image)
+		self.d_stop_sign = d1
+		self.d_light = d2
+
+print ("v param 1=",v_param1)
+print ("v param 2=",v_param2)
 
  
 	# show the frame
