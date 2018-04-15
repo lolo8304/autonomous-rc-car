@@ -100,6 +100,12 @@ rawCapture = PiRGBArray(camera, size=(160, 120))
 # allow the camera to warmup
 time.sleep(0.1)
 
+obj_detection = ObjectDetection()
+rc_car = RCControl()
+
+# cascade classifiers
+stop_cascade = cv2.CascadeClassifier('cascade_xml/stop_sign.xml')
+light_cascade = cv2.CascadeClassifier('cascade_xml/traffic_light.xml')
  
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -107,12 +113,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# and occupied/unoccupied text
 	image = frame.array
   grey_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
  
 	# show the frame
 	cv2.imshow("Frame", image)
-	cv2.imshow("Grey Frame", grey_image)
-
-
 
 	key = cv2.waitKey(1) & 0xFF
  
