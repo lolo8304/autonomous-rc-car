@@ -94,9 +94,9 @@ class DetectionHandler():
     #camera.framerate = 32
     #rawCapture = PiRGBArray(camera, size=(640, 480))
 
-    camera.resolution = (160, 120)
-    camera.framerate = 8
-    rawCapture = PiRGBArray(camera, size=(160, 120))
+    camera.resolution = (240, 180)
+    camera.framerate = 16
+    rawCapture = PiRGBArray(camera, size=(240, 180))
 
     # allow the camera to warmup
     time.sleep(0.1)
