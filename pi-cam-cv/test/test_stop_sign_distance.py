@@ -38,7 +38,7 @@ class ObjectDetection(object):
         v = 0
 
         # minimum value to proceed traffic light state validation
-        threshold = 150     
+        threshold = 20     
         
         # detection
         cascade_obj = cascade_classifier.detectMultiScale(
@@ -56,7 +56,7 @@ class ObjectDetection(object):
             #print(x_pos+5, y_pos+5, x_pos+width-5, y_pos+height-5, width, height)
 
             # stop sign
-            if width/height == 1:
+            if 0.85 < width/height < 1.15:
                 cv2.putText(image, 'STOP', (x_pos, y_pos-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             
             # traffic lights
