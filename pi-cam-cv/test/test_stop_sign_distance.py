@@ -136,8 +136,8 @@ class DetectionHandler():
           self.d_stop_sign = d1
           self.d_light = d2
 
-        print ("v param 1=",v_param1, " distance=",self.d_stop_sign)
-        print ("v param 2=",v_param2, " distance=",self.d_light)
+        print ("v param 1=",v_param1, " distance=",d1)
+        print ("v param 2=",v_param2, " distance=",d2)
 
         # show the frame
         cv2.imshow("Frame", image)
