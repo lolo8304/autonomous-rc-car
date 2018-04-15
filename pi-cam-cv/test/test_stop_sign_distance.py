@@ -134,7 +134,7 @@ class DetectionHandler():
         # distance measurement
         if v_param1 > 0 or v_param2 > 0:
           if v_param1 > 0:
-            d1 = self.d_to_camera.calculate(v_param1, self.h1, 300, image)
+            d1 = self.d_to_camera.calculate(v_param1, self.h1, 200, image)
           if v_param2 > 0:
             d2 = self.d_to_camera.calculate(v_param2, self.h2, 100, image)
           self.d_stop_sign = d1
