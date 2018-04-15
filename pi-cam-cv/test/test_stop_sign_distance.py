@@ -38,14 +38,14 @@ class ObjectDetection(object):
         v = 0
 
         # minimum value to proceed traffic light state validation
-        threshold = 20     
+        threshold = 150    
         
         # detection
         cascade_obj = cascade_classifier.detectMultiScale(
             gray_image,
             scaleFactor=1.1,
             minNeighbors=5,
-            minSize=(30, 30),
+            minSize=(25, 25),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
 
@@ -136,8 +136,8 @@ class DetectionHandler():
           self.d_stop_sign = d1
           self.d_light = d2
 
-        print ("v param 1=",v_param1)
-        print ("v param 2=",v_param2)
+        print ("v param 1=",v_param1, " distance=",self.d_stop_sign)
+        print ("v param 2=",v_param2, " distance=",self.d_light)
 
         # show the frame
         cv2.imshow("Frame", image)
